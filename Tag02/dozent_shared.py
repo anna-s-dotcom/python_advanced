@@ -10,12 +10,15 @@ def shared_tripple(t, lock):
     t.value *= 3
     lock.release()
 
+
+
+
+
 if __name__ == '__main__':
-    v = mp.Value('f', 1.0)
+    v = mp.Value('f', 5.0)
     lock = mp.Lock()
     print(v)
     print(v.value)
-
 
     p1 = mp.Process(target = shared_double, args=(v, lock))
     p2 = mp.Process(target = shared_tripple, args=[v, lock])
